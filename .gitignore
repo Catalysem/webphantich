@@ -1,0 +1,105 @@
+# ==================== SOURCE FILES (KEEP PRIVATE) ====================
+# Word/Excel source files - INTELLECTUAL PROPERTY
+*.txt
+*.docx
+*.doc
+*.xlsx
+*.xls
+
+# Source data directories - CORE ASSETS
+reports/
+!reports/README.md
+# Note: reports/ contains proprietary source data - DO NOT COMMIT source files
+
+# Backup & temp files
+*_backup*
+*.bak
+*~
+~$*
+.last_parsed_doc
+automation.log
+
+# ==================== GENERATED FILES (VARY) ====================
+# Keep main data file, ignore test outputs
+full_data_*.js
+!full_data.js
+!full_data_complete.js
+
+# Parser test outputs
+*_baseline.js
+*_phase*.js
+*_task*.js
+*_final*.js
+*_verify.js
+*_arch*.js
+
+# ==================== OS & EDITOR FILES ====================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==================== DEPENDENCIES ====================
+# Node modules
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# ==================== LOCAL-ONLY FILES ====================
+# Local development files (never commit)
+local/
+*.local
+*.tmp
+*.temp
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+
+# ==================== TEST OUTPUTS ====================
+# Test files (optional - uncomment if needed)
+# test_*.txt
+# *_test_output.*
+
+# ==================== DOCUMENTATION (OPTIONAL) ====================
+# Uncomment to keep private docs private
+# PRIVATE_*.md
+# */PRIVATE/
+# notes/
+# TODO.md
