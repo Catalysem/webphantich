@@ -1061,5 +1061,14 @@
             }, 1500);
         });
     </script>
+<script>
+fetch("data/stock_data.json")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Updated at:", data.updated_at);
+    console.log(data.stocks.VNINDEX);
+    // Sau này bạn gắn data này vào chart hiện có
+  });
+</script>
 </body>
 </html>
