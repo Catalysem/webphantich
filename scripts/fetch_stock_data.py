@@ -1,26 +1,33 @@
 import json
 import datetime
-import yfinance as yf
+import urllib.request
 
 today = datetime.date.today().isoformat()
 
+# Danh sách mã đang hiển thị trong Dashboard V3
+SYMBOLS = ["VNINDEX", "VCB", "VIC", "HPG"]
+
+SOURCE_URL = "https://raw.githubusercontent.com/financedataorg/stock-data/main/vietnam.json"
+
+with urllib.request.urlopen(SOURCE_URL) as response:
+    raw = response.read().decode("utf-8")
+    source_data = json.loads(raw)
+
+stocks = []
+for s in source_data:
+    if s["symbol"] in SYMBOLS:
+        stocks.append({
+            "symbol": s["symbol"],
+            "close": s["close"],
+            "change": s.get("change", 0)
+        })
+
 data = {
     "updated_at": today,
-    "stocks": {
-        "VNINDEX": []
-    }
+    "stocks": stocks
 }
 
-df = yf.download("^VNINDEX", period="10d")
-df.reset_index(inplace=True)
-
-for _, row in df.iterrows():
-    data["stocks"]["VNINDEX"].append({
-        "date": row["Date"].strftime("%Y-%m-%d"),
-        "close": round(float(row["Close"]), 2)
-    })
-
-with open("data/stock_data.json", "w", encoding="utf-8") as f:
+with open("data/market_summary.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2)
 
-print("Updated:", today)
+print("✅ Market summary updated:", today)
